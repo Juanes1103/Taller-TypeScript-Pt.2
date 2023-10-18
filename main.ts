@@ -41,7 +41,7 @@ function avergae(series : Serie[]) :void{
 
     }
 
-    add.innerHTML = (series.length>0)?`Season Average ${prom/total}` : "No hay series";
+    add.innerHTML = (series.length>0)?`Season Average: ${prom/total}` : "No hay series";
     average.appendChild(add);
 
 }

@@ -23,6 +23,6 @@ function avergae(series) {
         prom += serie.seasons;
         total += 1;
     }
-    add.innerHTML = (series.length > 0) ? "Season Average ".concat(prom / total) : "No hay series";
+    add.innerHTML = (series.length > 0) ? "Season Average: ".concat(prom / total) : "No hay series";
     average.appendChild(add);
 }
