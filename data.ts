@@ -1,26 +1,7 @@
-class Serie{
+//Importe de la clase Serie
+import { Serie } from "./Serie";
 
-    private id: number
-    private name: string
-    private channel: string
-    private seasons: number
-    private sipnosis: string
-    private link: string
-    private foto: string
-    
-    constructor(id: number, name: string, channel: string, seasons: number, sipnosis: string, link: string, foto: string){
-
-        this.id = id;
-        this.name = name;
-        this.channel = channel;
-        this.seasons = seasons;
-        this.sipnosis = sipnosis;
-        this.link = link;
-        this.foto = foto;
-
-    }
-    
-}
+//Definición valores data
 export const series = [
     new Serie (1,"Breaking Bad","AMC", 5,"Set and filmed in Albuquerque, New Mexico, the series tells the story of Walter White, a struggling and depressed high school chemistry teacher who is diagnosed with lung cancer" ,
     "https://www.amc.com/shows/breaking-bad","https://i.imgur.com/GGje0vc.jpg") ,
