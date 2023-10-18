@@ -1,5 +1,5 @@
 //Importe de la clase Serie
-import { Serie } from "./Serie";
+import { Serie } from "./Serie.js";
 
 //Definición valores data
 export const series = [
