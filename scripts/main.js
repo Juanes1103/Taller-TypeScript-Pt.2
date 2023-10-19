@@ -1,6 +1,12 @@
 import { series } from "./data.js";
 var seriesTable = document.getElementById("series");
 var average = document.getElementById("average");
+var card = document.getElementById("data");
+var showEvent;
+function cargar() {
+    showEvent = document.getElementsByName("click");
+    showEvent.forEach(function (c) { c.onclick = function () { return showCard(Number(c.id)); }; });
+}
 showSeries(series);
 avergae(series);
 function showSeries(series) {
@@ -13,6 +19,7 @@ function showSeries(series) {
         console.log(serie.foto);
     }
     seriesTable.appendChild(bodySerie);
+    cargar();
 }
 function avergae(series) {
     var prom = 0;
@@ -25,4 +32,12 @@ function avergae(series) {
     }
     add.innerHTML = (series.length > 0) ? "Season Average: ".concat(prom / total) : "No hay series";
     average.appendChild(add);
+}
+function showCard(number) {
+    card.childNodes.forEach(function (c) { card.removeChild(c); });
+    var serie = series[number - 1];
+    var cardBody = document.createElement("div");
+    cardBody.innerHTML =
+        "\n    <img class=\"card-img-top\" src=\"".concat(serie.foto, "\" alt=\"cardImage\">\n    <div class=\"card-body\">\n        <h5 class=\"cardTitle\">").concat(serie.name, "</h5>\n        <p class=\"cardInfo\">").concat(serie.sipnosis, "</p>\n        <a href=\"").concat(serie.link, "\"> ").concat(serie.link, "</a>\n    </div>\n    ");
+    card.appendChild(cardBody);
 }

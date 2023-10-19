@@ -3,6 +3,14 @@ import { series } from "./data.js";
 
 let seriesTable: HTMLElement = document.getElementById("series")!;
 let average: HTMLElement = document.getElementById("average")!;
+let card: HTMLElement = document.getElementById("data")!;
+let showEvent: NodeListOf <HTMLElement>;
+
+function cargar():void{
+
+    showEvent = document.getElementsByName("click")!;
+    showEvent.forEach(c=> {c.onclick=() =>showCard(Number(c.id))})
+}
 
 showSeries(series);
 avergae(series);
@@ -25,6 +33,7 @@ function showSeries(series : Serie[]):void{
     }
 
     seriesTable.appendChild(bodySerie);
+    cargar();
     
 }
 
@@ -44,4 +53,23 @@ function avergae(series : Serie[]) :void{
     add.innerHTML = (series.length>0)?`Season Average: ${prom/total}` : "No hay series";
     average.appendChild(add);
 
+}
+
+function showCard(number: number):void{
+    
+    card.childNodes.forEach(c=>{card.removeChild(c);})
+
+    let serie = series[number-1];
+    let cardBody = document.createElement("div");
+    cardBody.innerHTML = 
+    `
+    <img class="card-img-top" src="${serie.foto}" alt="cardImage">
+    <div class="card-body">
+        <h5 class="cardTitle">${serie.name}</h5>
+        <p class="cardInfo">${serie.sipnosis}</p>
+        <a href="${serie.link}"> ${serie.link}</a>
+    </div>
+    `
+
+    card.appendChild(cardBody);
 }
